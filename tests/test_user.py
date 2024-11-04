@@ -1,4 +1,8 @@
 from lib.user import User
+from flask import Flask
+from flask_bcrypt import Bcrypt
+app = Flask(__name__)
+bcrypt = Bcrypt(app)
 
 """
 Test User is created correctly
@@ -13,6 +17,7 @@ def test_user_created():
     assert user.name == "Test User"
     assert user.email == "test@gmail.com"
     assert user.phone_number == "12345678910"
+    assert bcrypt.check_password_hash(user.password, "password")
 
 """
 Test format correct
