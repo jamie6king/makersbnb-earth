@@ -5,6 +5,7 @@ INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Safaa', 
 INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Kelly', 'kelly@makers.tech', '06789123450', '5223c9ba0d35f1053744e82e25e8ab262bcdd5fe4bd5eb5bdd05a4558b619a64'); --- password: Howes1234
 INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Claire', 'claire@makers.tech', '0987612345', 'b7630407a27d7633ff0829749176222a50c55b5574ac8e338ce298e749220426'); --- password: Siqi1234
 
+
 --- dummy spaces
 INSERT INTO spaces (name, description, price, picture_url, user_id) VALUES ('Cozy Cottage', 'A charming cottage in the woods, perfect for a weekend getaway.', 120.00, 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0', 1);
 INSERT INTO spaces (name, description, price, picture_url, user_id) VALUES ('Modern Apartment', 'A stylish apartment in the heart of the city, close to all attractions.', 150.00, 'https://images.unsplash.com/photo-1560185127-6c8c1c1c1c1c', 1);

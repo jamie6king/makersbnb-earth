@@ -67,3 +67,4 @@ CREATE TABLE booking_requests (
     PRIMARY KEY (space_id, start_date, end_date)
 
 );
+

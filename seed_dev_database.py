@@ -6,5 +6,6 @@ from lib.database_connection import DatabaseConnection
 connection = DatabaseConnection(test_mode=False)
 connection.connect()
 connection.seed("seeds/makersbnb.sql")
+connection.seed("seeds/dummy.sql")
 # Add your own seed lines below...
 # E.g.connection.seed("seeds/your_seed.sql")

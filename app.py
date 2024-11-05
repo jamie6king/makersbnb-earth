@@ -1,10 +1,10 @@
 import os
 from flask import Flask, render_template, request, session, redirect
 from lib.database_connection import get_flask_database_connection
+from lib.space_repository import *
+from lib.user_repository import *
+from lib.user import *
 import re
-from lib.user_repository import UserRepository
-from lib.user import User
-from lib.space_repository import SpaceRepository
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -43,21 +43,32 @@ def login_attempt():
 
     connection = get_flask_database_connection(app)
 
-    repository = UserRepository(connection)
+    user_repository = UserRepository(connection)
 
-    users = repository.all()
+    users = user_repository.all()
+
+    space_respository = SpaceRepository(connection)
+    spaces = space_respository.all()
     
     if repository.check_password(email, password):
 
-        return redirect("/logged")
-
+        return render_template("account_home.html", spaces=spaces)
     else:
         
         return render_template("login.html", error=True)
 
+
 @app.route("/logged", methods=['GET'])
 def logged_in():
     return render_template("account_home.html")
+
+
+@app.route('/testlogged', methods=['GET'])
+def get_logged_page():
+    connection = get_flask_database_connection(app)
+    space_respository = SpaceRepository(connection)
+    spaces = space_respository.all()
+    return render_template('account_home.html', spaces=spaces)
 
 @app.route('/signup', methods=['GET'])
 def get_signup_page():
