@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_bcrypt import Bcrypt
 
-app = Flask(__name__)
-bcrypt = Bcrypt(app)
+#app = Flask(__name__)
+#bcrypt = Bcrypt(app)
 
 class User:
     def __init__(self, id, name, email, phone_number, hashed_password):

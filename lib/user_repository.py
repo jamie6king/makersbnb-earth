@@ -1,3 +1,4 @@
+
 from lib.database_connection import DatabaseConnection
 import hashlib
 from lib.user import *
@@ -35,3 +36,12 @@ class UserRepository:
         hashed_password = rows[0]['hashed_password']
         user = User(id, email, hashed_password)
         return user
+      
+    def all(self):
+        rows = self._connection.execute('SELECT * FROM users')
+        users = []
+        for row in rows:
+            person = User(row["id"],row["name"],row["email"],row["phone_number"],row["hashed_password"])
+            users.append(person)
+        return users
+

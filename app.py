@@ -4,6 +4,7 @@ from lib.database_connection import get_flask_database_connection
 from lib.user_repository import *
 from lib.user import *
 
+
 # Create a new Flask app
 app = Flask(__name__)
 
@@ -23,7 +24,22 @@ def get_login_page():
 
 @app.route('/logged', methods=['POST'])
 def login_attempt():
-    return render_template('account_home.html')
+    email = request.form['email']
+    password = request.form['password']
+
+    connection = get_flask_database_connection(app)
+
+    repository = UserRepository(connection)
+
+    users = repository.all()
+    
+    for user in users:
+
+        if user.email == email and user.password == password:
+
+            return render_template("account_home.html")
+
+    return render_template("login.html", error=True)
 
 @app.route('/signup', methods=['GET'])
 def get_signup_page():
@@ -86,6 +102,10 @@ def signup():
 
     # Render success template if everything works
     return render_template('signup_success.html')
+
+@app.route("/profile", methods=["GET"])
+def get_profile_page():
+    return render_template("account-page.html")
 
 
 
