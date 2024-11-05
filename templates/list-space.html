@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Makers B&B</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="navbar">
+    <a href ='/logged'>Login</a>
+    <a href ='/signup'>Sign Up</a>
+</div>
+<h1>List your space!</h1>
+<form action="/list-space" method="post" class="space-form">
+
+    <!-- {% if errors %}
+        <p class="t-errors">
+        There were errors with your submission: {{ errors }}
+        </p>
+    {% endif %} -->
+
+    <p>
+        <label for="spacename">Name of Space</label>
+
+        <input type="text" name="spacename" id="spacename" required>
+    </p>
+    <p>
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" required>
+    </p>
+
+    <p>
+        <label for="description">Describe your space</label>
+        <input type="text" name="description" id="description" required>
+    </p>
+
+    <p>
+        <label for="picture_url">Picture Url</label>
+        <input type="url" name="picture_url" id="picture_url">
+    </p>
+
+    <p>
+        <input type="submit" value="Upload Space">
+    </p>
+    </form>
+
+
+</body>
+</html>
