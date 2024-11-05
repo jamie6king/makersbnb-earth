@@ -1,6 +1,8 @@
 import os
 from flask import Flask, render_template, request, session, redirect
 from lib.database_connection import get_flask_database_connection
+from lib.user_repository import UserRepository
+from lib.user import User
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -21,7 +23,26 @@ def get_login_page():
 
 @app.route('/logged', methods=['POST'])
 def login_attempt():
-    return render_template('account_home.html')
+    email = request.form['email']
+    password = request.form['password']
+
+    connection = get_flask_database_connection(app)
+
+    repository = UserRepository(connection, bcrypt)
+
+    # TEMP!!!!!!!!!
+    repository.create(User(None, "Bob", "bob@gmail.com", "12345", "12345"))
+    # TEMP!!!!!!!!!
+
+    users = repository.all()
+    
+    for user in users:
+
+        if user.email == email and user.password == password:
+
+            return render_template("account_home.html")
+
+    return render_template("index.html")
 
 @app.route('/signup', methods=['GET'])
 def get_signup_page():
