@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feel at Home</title>
+    <!-- <link rel="stylesheet" href="static/styles.css" /> -->
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="logo">
+          <img src="" alt="MakersBnB Logo" />
+        </div>
+        <div class="nav-links">
+          <a href="/logged">Sign Out</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="intro">
+        <h1>Book a Space</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac
+          bibendum lorem. Nulla facilisi. Sed vel lacus sit amet magna ultricies
+          sagittis.
+        </p>
+        <!-- Booking Form -->
+        <form action="/search" method="GET">
+          <!-- Available From Date -->
+          <label for="available-from">Available from:</label>
+          <input
+            type="date"
+            id="available-from"
+            name="available_from"
+            required
+          />
+
+          <!-- Available To Date -->
+          <label for="available-to">Available to:</label>
+          <input type="date" id="available-to" name="available_to" required />
+
+          <!-- Search Button -->
+          <button type="submit">Filter</button>
+        </form>
+      </section>
+
+      <!-- Listings Section -->
+      <section class="listings">
+        <h2>Available Stays</h2>
+        <div class="listing">
+          <img src="https://via.placeholder.com/150" alt="Listing Image" />
+          <div class="listing-info">
+            <h3>Cozy Apartment in the Heart of the City</h3>
+            <p>New York, NY</p>
+            <p><strong>$120/night</strong></p>
+          </div>
+        </div>
+        <div class="listing">
+          <img src="https://via.placeholder.com/150" alt="Listing Image" />
+          <div class="listing-info">
+            <h3>Beachfront Bungalow with Stunning Views</h3>
+            <p>Malibu, CA</p>
+            <p><strong>$250/night</strong></p>
+          </div>
+        </div>
+        <div class="listing">
+          <img src="https://via.placeholder.com/150" alt="Listing Image" />
+          <div class="listing-info">
+            <h3>Charming Cottage in the Countryside</h3>
+            <p>Lake District, UK</p>
+            <p><strong>$95/night</strong></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

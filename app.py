@@ -23,10 +23,6 @@ def get_login_page():
 def login_attempt():
     return render_template('account_home.html')
 
-@app.route('/profile', methods=['GET'])
-def get_spaces():
-    return render_template('spaces.html')
-
 @app.route('/signup', methods=['GET'])
 def get_signup_page():
     return render_template('signup.html')
