@@ -1,17 +1,27 @@
-from lib.database_connection import DatabaseConnection
-from lib.users_repository import UsersRepository
-from lib.users import User
+from lib.user_repository import UserRepository
+from lib.user import User
 
-def db_connection():
-    connection = DatabaseConnection()
-    connection.seed("seeds/makersbnb.sql")
-    return connection
+def test_user_repository_starts_empty(db_connection):
+    
+    db_connection.seed("seeds/makersbnb.sql")
+
+    repository = UserRepository(db_connection)
+
+    users = repository.all()
+
+    assert users == []
 
 def test_create_user(db_connection):
-    def test_create_user(db_connection):
         db_connection.seed("seeds/makersbnb.sql")
-        repository = UsersRepository(db_connection)
+        repository = UserRepository(db_connection)
 
-        repository.create(User(None, "bobby", "bobb2fr@gmail.com", "07946477898", "password"))
+        repository.create(User(None, "bobby", "bobb2fr@gmail.com", "07946477898","password"))
+         
+         
+        result = repository.all()
+        assert result == [
+              User(1, "bobby", "bobb2fr@gmail.com", "07946477898","password")]
 
-  
+
+
+        
