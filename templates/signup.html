@@ -7,6 +7,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/styles.css" />
     <title>Sign Up to Makers BnB</title>
+
+    <!-- <link rel="stylesheet" href="/static/login.css" /> -->
+    <style>
+      .error-message {
+        color: red;
+        margin-top: 10px;
+      }
+    </style>
+
   </head>
   <body>
     <header class="container-fluid">
@@ -41,33 +50,62 @@
 
     </header>
     <main>
-      <h1>Sign Up to Makers BnB</h1>
+
+
+
+<h1>Sign Up to Makers BnB</h1>
       <br>
       <form action="/signup" method="POST">
         <div class="mb-3">
           <label for="name" class="form-label" style="font-size:1.25rem;">Full name</label>
-          <input type="text" class="form-control-sm" id="name" name="name" aria-describedby="nameHelp" required>
+          <input type="text" class="form-control-sm" id="name" name="name" aria-describedby="nameHelp" value="{{ name or '' }}" required>
         </div>
 
         <div class="mb-3">
           <label for="email" class="form-label" style="font-size:1.25rem;">Email address</label>
-          <input type="email" class="form-control-sm" id="email" name="email" aria-describedby="emailHelp" required>
+          <input type="email" class="form-control-sm" id="email" name="email" aria-describedby="emailHelp" value="{{ email or '' }}" required>
         </div>
 
         <div class="mb-3">
           <label for="password" class="form-label" style="font-size:1.25rem;">Password</label>
-          <input type="password" class="form-control-sm" name="password" id="password" required>
+          <input type="password" class="form-control-sm" name="password" id="password" value="{{ password or ''}} required>
+        </div>
+
+<div class="mb-3">
+          <label for="country-code" class="form-label" style="font-size:1.25rem;">Country Code</label>
+          <select id="country-code" class="form-control-sm" name="country_code" required>
+              <option value="+1" {% if country_code == '+1' %}selected{% endif %}>
+                🇺🇸 +1 (USA)
+              </option>
+              <option value="+44" {% if country_code == '+44' %}selected{% endif %}>
+                🇬🇧 +44 (UK)
+              </option>
+              <option value="+61" {% if country_code == '+61' %}selected{% endif %}>
+                🇦🇺 +61 (Australia)
+              </option>
+              <option value="+91" {% if country_code == '+91' %}selected{% endif %}>
+                🇮🇳 +91 (India)
+              </option>
+              <!-- Add other country codes as needed -->
+            </select>
         </div>
 
         <div class="mb-3">
           <label for="phone" class="form-label" style="font-size:1.25rem;">Phone number</label>
-          <input type="tel" class="form-control-sm" name="phone" id="phone" required>
+          <input type="tel" class="form-control-sm" name="phone" id="phone" placeholder="Enter your number"
+              value="{{ mobile_number or '' }}" required>
         </div>
 
         <button type="submit" class="btn ms-1" style="background-color: #4bb6e4; color: white;">Submit</button>
+        <!-- Display error message if available -->
+          {% if error %}
+          <p class="error-message">{{ error }}</p>
+          {% endif %}
+      </div>
       </form>
-
     </main>
+                                  
+                                  
     <footer>
       <div id="footer" class="row pt-2 text-center">
         <div class="col-sm-5 col-md-4 float-start">

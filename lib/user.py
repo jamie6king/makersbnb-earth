@@ -5,12 +5,12 @@ from flask_bcrypt import Bcrypt
 #bcrypt = Bcrypt(app)
 
 class User:
-    def __init__(self, id, name, email, phone_number, password):
+    def __init__(self, id, name, email, phone_number, hashed_password):
         self.id = id
         self.name = name
         self.email = email
         self.phone_number = phone_number
-        self.password = password
+        self.password = hashed_password
 
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
