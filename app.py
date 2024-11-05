@@ -28,11 +28,7 @@ def login_attempt():
 
     connection = get_flask_database_connection(app)
 
-    repository = UserRepository(connection, bcrypt)
-
-    # TEMP!!!!!!!!!
-    repository.create(User(None, "Bob", "bob@gmail.com", "12345", "12345"))
-    # TEMP!!!!!!!!!
+    repository = UserRepository(connection)
 
     users = repository.all()
     
@@ -42,7 +38,7 @@ def login_attempt():
 
             return render_template("account_home.html")
 
-    return render_template("index.html")
+    return render_template("login.html", error=True)
 
 @app.route('/signup', methods=['GET'])
 def get_signup_page():

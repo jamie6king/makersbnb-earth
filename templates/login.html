@@ -34,6 +34,13 @@
 
           <button type="submit">Log in</button>
         </form>
+
+        {% if error %}
+          <div>
+            <p style="color: red;">Invalid email or password!</p>
+          </div>
+        {% endif %}
+
       </div>
     </main>
   </body>
