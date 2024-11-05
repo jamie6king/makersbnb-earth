@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_bcrypt import Bcrypt
 
-app = Flask(__name__)
-bcrypt = Bcrypt(app)
+#app = Flask(__name__)
+#bcrypt = Bcrypt(app)
 
 class User:
     def __init__(self, id, name, email, phone_number, password):
@@ -10,7 +10,7 @@ class User:
         self.name = name
         self.email = email
         self.phone_number = phone_number
-        self.password = bcrypt.generate_password_hash(password)
+        self.password = password
 
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
