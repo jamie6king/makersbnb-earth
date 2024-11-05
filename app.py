@@ -5,6 +5,7 @@ from lib.user_repository import *
 from lib.user import *
 import re
 
+from lib.space_repository import SpaceRepository
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -15,9 +16,21 @@ app = Flask(__name__)
 # Returns the homepage
 # Try it:
 #   ; open http://localhost:5001/index
+
+
 @app.route('/', methods=['GET'])
 def default_page():
-    return render_template('home.html')
+    connection = get_flask_database_connection(app)
+    repo = SpaceRepository(connection)
+    spaces = repo.all()
+    return render_template('home.html', spaces=spaces)
+
+@app.route('/home/<id>')
+def get_selected_space(id):
+    connection = get_flask_database_connection(app)
+    repo = SpaceRepository(connection)
+    space = repo.find(id)
+    return render_template("home/show-space.html", space=space)
 
 @app.route('/login', methods=['GET'])
 def get_login_page():
@@ -103,6 +116,9 @@ def signup():
 def get_profile_page():
     return render_template("account-page.html")
 
+@app.route('/list-space', methods=['GET'])
+def get_list_space_page():
+    return render_template('list-space.html')
 
 
 # These lines start the server if you run this file directly
