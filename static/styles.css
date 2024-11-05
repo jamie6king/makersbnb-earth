@@ -9,6 +9,7 @@ body {
   text-align: center;
 }
 
+/* HOME PAGE */
 /* Header styles */
 .logo{
   text-align: center;
@@ -65,3 +66,7 @@ main p{
   height: 50px;
   border-radius: 15px;
 }
+
+
+/* LOGIN PAGE */
+
