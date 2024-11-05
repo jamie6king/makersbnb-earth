@@ -48,6 +48,10 @@ def get_signup_page():
 def get_sign_page():
     return render_template('signup_success.html')
 
+@app.route("/profile", methods=["GET"])
+def get_profile_page():
+    return render_template("account-page.html")
+
 
 # These lines start the server if you run this file directly
 # They also start the server configured to use the test database
