@@ -30,14 +30,18 @@
       <!-- Listings Section -->
       <section class="listings">
         <h2>Available Stays</h2>
+        {% for space in spaces %}
         <div class="listing">
           <img src="https://via.placeholder.com/150" alt="Listing Image" />
           <div class="listing-info">
-            <h3>Cozy Apartment in the Heart of the City</h3>
-            <p>New York, NY</p>
-            <p><strong>$120/night</strong></p>
+            <h3><a href="/home/{{space.id}}">Cozy Apartment in the Heart of the City</a></h3>
+            <p>{{space.name}}</p>
+            <p><strong>Price:{{space.price}}</strong></p>
           </div>
         </div>
+        {% endfor %}
+      </section>
+
         <div class="listing">
           <img src="https://via.placeholder.com/150" alt="Listing Image" />
           <div class="listing-info">
