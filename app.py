@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, session, redirect
 from lib.database_connection import get_flask_database_connection
 from lib.user_repository import *
 from lib.user import *
+import re
 
 
 # Create a new Flask app
@@ -44,15 +45,6 @@ def login_attempt():
 @app.route('/signup', methods=['GET'])
 def get_signup_page():
     return render_template('signup.html')
-
-from flask import request, render_template
-import re
-
-from flask import request, render_template
-import re
-
-from flask import request, render_template
-import re
 
 @app.route('/signup', methods=['POST'])
 def signup():
@@ -98,7 +90,7 @@ def signup():
     except Exception as e:
         print(f"Error creating user: {e}")
         error = "An error occurred during signup."
-        return render_template('signup.html', error=error, name=name, email=email, country_code=country_code, mobile_number=mobile_number)
+        return render_template('signup.html', error=error, name=name, email=email, password=password, country_code=country_code, mobile_number=mobile_number)
 
     # Render success template if everything works
     return render_template('signup_success.html')

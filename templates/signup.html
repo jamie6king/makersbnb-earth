@@ -68,11 +68,11 @@
 
         <div class="mb-3">
           <label for="password" class="form-label" style="font-size:1.25rem;">Password</label>
-          <input type="password" class="form-control-sm" name="password" id="password" value="{{ password or ''}} required>
+          <input type="password" class="form-control-sm" name="password" id="password" value="{{ password or ''}}" required>
         </div>
 
 <div class="mb-3">
-          <label for="country-code" class="form-label" style="font-size:1.25rem;">Country Code</label>
+          <label for="country_code" class="form-label" style="font-size:1.25rem;">Country Code</label>
           <select id="country-code" class="form-control-sm" name="country_code" required>
               <option value="+1" {% if country_code == '+1' %}selected{% endif %}>
                 🇺🇸 +1 (USA)
@@ -91,8 +91,8 @@
         </div>
 
         <div class="mb-3">
-          <label for="phone" class="form-label" style="font-size:1.25rem;">Phone number</label>
-          <input type="tel" class="form-control-sm" name="phone" id="phone" placeholder="Enter your number"
+          <label for="mobile_number" class="form-label" style="font-size:1.25rem;">Phone number</label>
+          <input type="tel" class="form-control-sm" name="mobile_number" id="phone" placeholder="Enter your number"
               value="{{ mobile_number or '' }}" required>
         </div>
 
