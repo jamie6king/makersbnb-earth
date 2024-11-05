@@ -6,8 +6,6 @@ from lib.user_repository import *
 from lib.user import *
 import re
 
-from lib.space_repository import SpaceRepository
-
 # Create a new Flask app
 app = Flask(__name__)
 
@@ -24,7 +22,14 @@ def default_page():
     connection = get_flask_database_connection(app)
     repo = SpaceRepository(connection)
     spaces = repo.all()
-    return render_template('home.html', spaces=spaces, spaces=spaces)
+    return render_template('home.html', spaces=spaces)
+
+@app.route('/home/<id>')
+def get_selected_space(id):
+    connection = get_flask_database_connection(app)
+    repo = SpaceRepository(connection)
+    space = repo.find(id)
+    return render_template("home/show-space.html", space=space)
 
 @app.route('/home/<id>')
 def get_selected_space(id):
