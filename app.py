@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, request, session, redirect
 from lib.database_connection import get_flask_database_connection
+from lib.space_repository import *
 from lib.user_repository import *
 from lib.user import *
 import re
@@ -15,9 +16,13 @@ app = Flask(__name__)
 # Returns the homepage
 # Try it:
 #   ; open http://localhost:5001/index
+
 @app.route('/', methods=['GET'])
 def default_page():
-    return render_template('home.html')
+    connection = get_flask_database_connection(app)
+    respository = SpaceRepository(connection)
+    spaces = respository.all()
+    return render_template('home.html', spaces=spaces)
 
 @app.route('/logged', methods=['GET'])
 def get_login_page():
@@ -30,17 +35,28 @@ def login_attempt():
 
     connection = get_flask_database_connection(app)
 
-    repository = UserRepository(connection)
+    user_repository = UserRepository(connection)
 
-    users = repository.all()
+    users = user_repository.all()
+
+    space_respository = SpaceRepository(connection)
+    spaces = space_respository.all()
     
     for user in users:
 
         if user.email == email and user.password == password:
 
-            return render_template("account_home.html")
+            return render_template("account_home.html", spaces=spaces)
 
     return render_template("login.html", error=True)
+
+
+@app.route('/testlogged', methods=['GET'])
+def get_logged_page():
+    connection = get_flask_database_connection(app)
+    space_respository = SpaceRepository(connection)
+    spaces = space_respository.all()
+    return render_template('account_home.html', spaces=spaces)
 
 @app.route('/signup', methods=['GET'])
 def get_signup_page():

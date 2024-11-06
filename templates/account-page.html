@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Account Page</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="navbar">
-            <div class="logo">
-                <img src="" alt="M Logo">
-            </div>
-            <div class="nav-links">
-                <!-- Needs to be a back button here once it's added -->
-                <a href="/logged">Sign Out</a>
-            </div>
+      <div class="navbar">
+        <div class="logo">
+          <img src="" alt="M Logo" />
         </div>
+        <div class="nav-links">
+          <!-- Needs to be a back button here once it's added -->
+          <a href="/logged">Sign Out</a>
+        </div>
+      </div>
     </header>
     <main>
-        <section class="spaces">
-            <h1>Spaces</h1>
-            
-            <div class="space">
-                <h3>Charming Cottage in the Countryside</h3>
-                <p>Lake District, UK</p>
-                <p><strong>$95/night</strong></p>
-                <a href="">More Info</a>
-            </div>
-            <div class="space">
-                <h3>Charming Cottage in the Countryside</h3>
-                <p>Lake District, UK</p>
-                <p><strong>$95/night</strong></p>
-                <a href="">More Info</a>
-            </div>
-            <div class="space">
-                <h3>Charming Cottage in the Countryside</h3>
-                <p>Lake District, UK</p>
-                <p><strong>$95/night</strong></p>
-                <a href="">More Info</a>
-            </div>
-        </section>
+      <section class="spaces">
+        <h2>Latest Available Stays</h2>
+        <br />
+
+        <!-- Row Listings -->
+        {% for space in spaces %}
+        <div class="container-fluid new-listings">
+          <!-- Use the picture_url if available; otherwise, fallback to placeholder image -->
+          <img
+            src="{{ space.picture_url or '/static/images/imgplaceholder.png' }}"
+            alt="Space Image"
+          />
+
+          <div class="listing-text">
+            <h5 class="card-title">{{ space.name }}</h5>
+            <p>${{ space.price }} a night</p>
+            <p class="card-text">{{ space.description }}</p>
+          </div>
+
+          <div class="listing-contact">
+            <p>Tel: 01234 567 890</p>
+            <!-- Static for now; can replace with dynamic contact if available -->
+            <a
+              href="/spaces/{{ space.id }}"
+              class="btn"
+              style="background-color: #4bb6e4"
+              >Read more</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </section>
     </main>
-</body>
+  </body>
 </html>

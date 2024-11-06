@@ -1,9 +1,9 @@
 --- dummy users
-INSERT INTO users (name, email, phone_number, password) VALUES ("Jamie", "jamie@makers.tech", "01234567890", "King1234");
-INSERT INTO users (name, email, phone_number, password) VALUES ("Abdirahman", "abdirahman@makers.tech", "09876543210", "Aden1234");
-INSERT INTO users (name, email, phone_number, password) VALUES ("Safaa", "safaa@makers.tech", "05432167890", "Imran1234");
-INSERT INTO users (name, email, phone_number, password) VALUES ("Kelly", "kelly@makers.tech", "06789123450", "Howes1234");
-INSERT INTO users (name, email, phone_number, password) VALUES ("Claire", "claire@makers.tech", "0987612345", "Siqi1234");
+INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Jamie', 'jamie@makers.tech', '01234567890', 'King1234');
+INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Abdirahman', 'abdirahman@makers.tech', '09876543210', 'Aden1234');
+INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Safaa', 'safaa@makers.tech', '05432167890', 'Imran1234');
+INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Kelly', 'kelly@makers.tech', '06789123450', 'Howes1234');
+INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Claire', 'claire@makers.tech', '0987612345', 'Siqi1234');
 
 --- dummy spaces
 INSERT INTO spaces (name, description, price, picture_url, user_id) VALUES ('Cozy Cottage', 'A charming cottage in the woods, perfect for a weekend getaway.', 120.00, 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0', 1);
