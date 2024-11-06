@@ -1,9 +1,9 @@
 import os
 from flask import Flask, render_template, request, session, redirect
 from lib.database_connection import get_flask_database_connection
-from lib.user_repository import *
-from lib.user import *
 import re
+from lib.user_repository import UserRepository
+from lib.user import User
 from lib.space_repository import SpaceRepository
 
 # Create a new Flask app
@@ -22,7 +22,7 @@ def default_page():
     connection = get_flask_database_connection(app)
     repo = SpaceRepository(connection)
     spaces = repo.all()
-    return render_template('home.html', spaces=spaces, spaces=spaces)
+    return render_template('home.html', spaces=spaces)
 
 @app.route('/home/<id>')
 def get_selected_space(id):
