@@ -51,21 +51,6 @@
                 <a class="nav-link" href="/signup">Sign Up</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button
-                class="btn search-btn"
-                type="submit"
-                style="background-color: black; color: white"
-              >
-                Search
-              </button>
-            </form>
           </div>
         </div>
       </nav>
@@ -109,8 +94,7 @@
 
           <div class="listing-contact">
               <p>Tel: 01234 567 890</p>
-              <a href="/{{space.id}}" class="btn" style="background-color: #4bb6e4">Read more</a>
-
+              <a href="/{{space.id}}" class="btn space-button" id="space-button" style="background-color: #4bb6e4">Read more</a>
           </div>
         </div>
         {% endfor %}

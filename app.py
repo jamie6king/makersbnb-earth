@@ -49,12 +49,12 @@ def login_attempt():
 
     users = user_repository.all()
 
-    space_respository = SpaceRepository(connection)
-    spaces = space_respository.all()
+    
     
     if user_repository.check_password(email, password):
 
-        return render_template("account_home.html", spaces=spaces)
+        return redirect("/logged")
+        #return render_template("account_home.html", spaces=spaces)
     else:
         
         return render_template("login.html", error=True, email=email, password=password)
@@ -62,7 +62,12 @@ def login_attempt():
 
 @app.route("/logged", methods=['GET'])
 def logged_in():
-    return render_template("account_home.html")
+    connection = get_flask_database_connection(app)
+    
+    space_respository = SpaceRepository(connection)
+    spaces = space_respository.all()
+
+    return render_template("account_home.html", spaces=spaces)
 
 
 @app.route('/testlogged', methods=['GET'])
