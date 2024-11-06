@@ -96,7 +96,7 @@
         <div class="container-fluid new-listings">
           <!-- Use the picture_url if available; otherwise, fallback to placeholder image -->
           <img
-            src="{{ space.picture_url or '/static/images/imgplaceholder.png' }}"
+            src="/static/images/spaces/{{ space.id }} {{ space.name }}.png"
             alt="Space Image"
           />
 
