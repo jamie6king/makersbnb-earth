@@ -39,13 +39,6 @@ def get_selected_space(id):
     space = repo.find(id)
     return render_template("home/show-space.html", space=space)
 
-@app.route('/home/<id>')
-def get_selected_space(id):
-    connection = get_flask_database_connection(app)
-    repo = SpaceRepository(connection)
-    space = repo.find(id)
-    return render_template("home/show-space.html", space=space)
-
 
 @app.route('/login', methods=['GET'])
 def get_login_page():

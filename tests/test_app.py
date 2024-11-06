@@ -30,4 +30,5 @@ def test_show_space(db_connection, page, test_web_address):
     page.goto(f"http://{test_web_address}/home/1")
     
     h1_tag = page.locator("h1")
+
     expect(h1_tag).to_have_text("Cosy Apartment in the Heart of the City")
