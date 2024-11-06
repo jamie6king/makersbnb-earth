@@ -51,33 +51,12 @@
                 <a class="nav-link" href="/">Logout</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button
-                class="btn search-btn"
-                type="submit"
-                style="background-color: black; color: white"
-              >
-                Search
-              </button>
-            </form>
           </div>
         </div>
       </nav>
     </header>
     <main>
       <h1>Feel at Home, Anywhere</h1>
-      <h2
-        class="mx-auto rounded"
-        style="background-color: #4bb6e4; color: white; width: 60vw"
-      >
-        Latest Available Stays
-      </h2>
       <br />
       <p>
         We're thrilled to have you here. Whether you're here for relaxation,
@@ -116,6 +95,7 @@
             <a
               href="/spaces/{{ space.id }}"
               class="btn"
+              id="space-button"
               style="background-color: #4bb6e4"
               >Read more</a
             >
@@ -124,5 +104,33 @@
         {% endfor %}
       </section>
     </main>
+    <footer>
+      <div id="footer" class="row pt-2 text-center">
+        <div class="col-sm-5 col-md-4 float-start">
+          <p>© Copyright Makers B&B</p>
+        </div>
+        <div class="col-sm-2 col-md-4">
+          <img
+            src="/static/images/facebook_logo.png"
+            class="social-media img-fluid"
+            alt="facebook logo"
+          />
+          <img
+            src="/static/images/twitter_logo.png"
+            class="social-media img-fluid"
+            alt="twitter logo"
+          />
+          <img
+            src="/static/images/instagram_logo.png"
+            class="social-media img-fluid"
+            alt="instagram logo"
+          />
+        </div>
+        <div class="col-sm-5 col-md-4 float-end">
+          <p>Tel: 01223 344 556</p>
+          <p>Email: help@makersbnb.com</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

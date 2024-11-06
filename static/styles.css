@@ -117,3 +117,46 @@ color: #4bb6e4 !important;
   flex: 1; 
   text-align: center;
 }
+
+.booking-text:hover{
+  background-color: #4bb6e4 !important;
+color: white !important;
+}
+
+/* LIST SPACES */
+
+.list-space-form{
+  background-color: #4bb6e4;
+  width: 60vw;
+  border-radius: 8px;
+  text-align: center;
+  margin: auto;
+  padding: 10px 0px;
+}
+
+.list-btn:hover{
+  background-color: white !important;
+  color: black !important;
+}
+
+/* LOGIN PAGE */
+.login-btn:hover{
+  background-color: black !important;
+  color:#4bb6e4 !important;
+}
+
+/* SIGN UP PAGE */
+
+.signup-form{
+  background-color: #4bb6e4;
+  width: 60vw;
+  border-radius: 8px;
+  text-align: center;
+  margin: auto;
+  padding: 10px 0px;
+}
+
+.signup-btn:hover{
+  background-color: white !important;
+  color: black !important;
+}

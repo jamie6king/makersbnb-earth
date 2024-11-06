@@ -30,10 +30,6 @@
                 <a class="nav-link" href="/signup">Sign Up</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn search-btn" type="submit" style="background-color: black; color: white">Search</button>
-            </form>
           </div>
         </div>
       </nav>
@@ -51,7 +47,7 @@
           <label for="password" class="form-label pe-3">Password</label>
           <input type="password" class="form-control-sm"id="password" name="password" value="{{ password or '' }}" required />
         </div>
-        <button type="submit" class="btn ms-1" style="background-color: #4bb6e4; color: white;">Submit</button>
+        <button type="submit" class="btn ms-1 login-btn" style="background-color: #4bb6e4; color: white;">Submit</button>
       </form>
         {% if error %}
           <div>
