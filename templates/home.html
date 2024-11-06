@@ -51,21 +51,6 @@
                 <a class="nav-link" href="/signup">Sign Up</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button
-                class="btn search-btn"
-                type="submit"
-                style="background-color: black; color: white"
-              >
-                Search
-              </button>
-            </form>
           </div>
         </div>
       </nav>
@@ -111,7 +96,8 @@
             <!-- Static for now; can replace with dynamic contact if available -->
             <a
               href="/spaces/{{ space.id }}"
-              class="btn"
+              class="btn space-button"
+              id="space-button"
               style="background-color: #4bb6e4"
               >Read more</a
             >
