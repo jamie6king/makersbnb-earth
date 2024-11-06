@@ -25,20 +25,14 @@ def default_page():
     spaces = repo.all()
     return render_template('home.html', spaces=spaces)
 
-@app.route('/home/<id>')
+@app.route('/<id>', methods=['GET'])
 def get_selected_space(id):
     connection = get_flask_database_connection(app)
-    repo = SpaceRepository(connection)
-    space = repo.find(id)
-    return render_template("home/show-space.html", space=space)
-
-@app.route('/home/<id>')
-def get_selected_space(id):
-    connection = get_flask_database_connection(app)
-    repo = SpaceRepository(connection)
-    space = repo.find(id)
-    return render_template("home/show-space.html", space=space)
-
+    spaceRepo = SpaceRepository(connection)
+    userRepo = UserRepository(connection)
+    space = spaceRepo.find(id)
+    user = userRepo.find(id)
+    return render_template("show-space.html", space=space, user=user)
 
 @app.route('/login', methods=['GET'])
 def get_login_page():
@@ -138,11 +132,6 @@ def get_profile_page():
 @app.route('/list-space', methods=['GET'])
 def get_list_space_page():
     return render_template('list-space.html')
-
-@app.route('/list-space', methods=['GET'])
-def get_list_space_page():
-    return render_template('list-space.html')
-
 
 # These lines start the server if you run this file directly
 # They also start the server configured to use the test database

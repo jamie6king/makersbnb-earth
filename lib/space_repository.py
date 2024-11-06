@@ -32,4 +32,4 @@ class SpaceRepository:
     def find(self, space_id):
         result = self._connection.execute("SELECT * FROM spaces WHERE id = %s", [space_id])
         row = result[0]
-        return Space(row["id"], row["name"], row["description"], row["price"], row["picture_url"])
+        return Space(row["name"], row["description"], row["price"], row["picture_url"], row["user_id"])
