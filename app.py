@@ -58,12 +58,12 @@ def login_attempt():
     space_respository = SpaceRepository(connection)
     spaces = space_respository.all()
     
-    if repository.check_password(email, password):
+    if user_repository.check_password(email, password):
 
         return render_template("account_home.html", spaces=spaces)
     else:
         
-        return render_template("login.html", error=True)
+        return render_template("login.html", error=True, email=email, password=password)
 
 
 @app.route("/logged", methods=['GET'])
