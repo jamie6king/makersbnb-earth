@@ -1,9 +1,10 @@
 --- dummy users
-INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Jamie', 'jamie@makers.tech', '01234567890', 'King1234');
-INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Abdirahman', 'abdirahman@makers.tech', '09876543210', 'Aden1234');
-INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Safaa', 'safaa@makers.tech', '05432167890', 'Imran1234');
-INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Kelly', 'kelly@makers.tech', '06789123450', 'Howes1234');
-INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Claire', 'claire@makers.tech', '0987612345', 'Siqi1234');
+INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Jamie', 'jamie@makers.tech', '01234567890', '7b6bce8f82acfddeff87841d2efc3e900904d7177a570049b8586e865f412978'); --- password: King1234
+INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Abdirahman', 'abdirahman@makers.tech', '09876543210', '12eff4d303992ebecdc7bd8fd47cf57fc43fa886a01c939fa8989c241b98ce46'); --- password: Aden1234
+INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Safaa', 'safaa@makers.tech', '05432167890', '527703e55e69a631e4bb0a58e922085a0e520c31308ba35187e17fa86faddaed'); --- password: Imran1234
+INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Kelly', 'kelly@makers.tech', '06789123450', '5223c9ba0d35f1053744e82e25e8ab262bcdd5fe4bd5eb5bdd05a4558b619a64'); --- password: Howes1234
+INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Claire', 'claire@makers.tech', '0987612345', 'b7630407a27d7633ff0829749176222a50c55b5574ac8e338ce298e749220426'); --- password: Siqi1234
+
 
 --- dummy spaces
 INSERT INTO spaces (name, description, price, picture_url, user_id) VALUES ('Cozy Cottage', 'A charming cottage in the woods, perfect for a weekend getaway.', 120.00, 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0', 1);

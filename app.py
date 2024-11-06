@@ -24,11 +24,11 @@ def default_page():
     spaces = respository.all()
     return render_template('home.html', spaces=spaces)
 
-@app.route('/logged', methods=['GET'])
+@app.route('/login', methods=['GET'])
 def get_login_page():
     return render_template('login.html')
 
-@app.route('/logged', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def login_attempt():
     email = request.form['email']
     password = request.form['password']
@@ -42,13 +42,17 @@ def login_attempt():
     space_respository = SpaceRepository(connection)
     spaces = space_respository.all()
     
-    for user in users:
+    if repository.check_password(email, password):
 
-        if user.email == email and user.password == password:
+        return render_template("account_home.html", spaces=spaces)
+    else:
+        
+        return render_template("login.html", error=True)
 
-            return render_template("account_home.html", spaces=spaces)
 
-    return render_template("login.html", error=True)
+@app.route("/logged", methods=['GET'])
+def logged_in():
+    return render_template("account_home.html")
 
 
 @app.route('/testlogged', methods=['GET'])
