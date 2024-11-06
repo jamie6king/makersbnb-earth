@@ -47,7 +47,7 @@ def login_attempt():
         return render_template("account_home.html", spaces=spaces)
     else:
         
-        return render_template("login.html", error=True)
+        return render_template("login.html", error=True, email=email, password=password)
 
 
 @app.route("/logged", methods=['GET'])
