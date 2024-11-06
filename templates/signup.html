@@ -43,6 +43,11 @@
 
 
     </header>
+    <script>
+      function showAlert() {
+          alert("You have successfully signed up!");
+      }
+  </script>
     <main>
 
 
@@ -90,7 +95,7 @@
               value="{{ mobile_number or '' }}" required>
         </div>
 
-        <button type="submit" class="btn ms-1 signup-btn" style="background-color: black; color: #4bb6e4;">Submit</button>
+        <button type="submit" class="btn ms-1 signup-btn" style="background-color: black; color: #4bb6e4;" onclick="showAlert()">Submit</button>
         <!-- Display error message if available -->
           {% if error %}
           <p class="error-message">{{ error }}</p>
