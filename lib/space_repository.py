@@ -28,3 +28,8 @@ class SpaceRepository:
             space.picture_url,
             space.user_id
         ])
+    
+    def find(self, space_id):
+        result = self._connection.execute("SELECT * FROM spaces WHERE id = %s", [space_id])
+        row = result[0]
+        return Space(row["name"], row["description"], row["price"], row["picture_url"], row["user_id"])

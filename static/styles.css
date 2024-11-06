@@ -15,6 +15,20 @@ body {
   text-align: center;
 }
 
+.nav-link:hover{
+  background-color: black !important;
+  color: #4bb6e4 !important;
+  border-radius: 8px !important;
+  transition: 0.3s !important; 
+}
+
+.search-btn:hover{
+  background-color: white !important;
+  color: #4bb6e4 !important;
+  border-radius: 8px !important;
+  transition: 0.3s !important; 
+}
+
 /* Main Styles */
 
 main h1 {
@@ -26,7 +40,23 @@ main p {
   font-size: 1.25em;
 }
 
-.new-listings {
+
+.show-space{
+  border: solid 3px #4bb6e4;
+  border-radius: 8px;
+  width: 80vw;
+  display: flex;
+  align-items: flex-start; 
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.space-text{
+  align-self: center;
+  flex: 1;
+}
+
+.new-listings{
   border: solid 3px #4bb6e4;
   border-radius: 8px;
   width: 80vw;
@@ -36,23 +66,36 @@ main p {
   margin-bottom: 10px;
 }
 
-.new-listings img {
-  max-width: 150px;
-  max-height: 150px;
-  height: auto;
-  flex-shrink: 0;
+
+.new-listings img{
+  max-width: 200px; 
+  max-height: 200px;
+  height: auto; 
+  flex-shrink: 0; 
+  margin: 10px 5px 10px 5px;
+  border: solid 1px;
   border-radius: 8px;
 }
 
-.listing-text {
-  flex: 1;
-  text-align: center;
+.listing-text{
+  /* margin-top:10px; */
+  align-self: center;
+  flex: 1; 
+  /* text-align: center; */
 }
 
-.listing-contact {
-  flex: 1;
-  text-align: right;
+.listing-contact{
+  align-self: center;
+  flex: 1; 
+  text-align: right
 }
+
+#space-button:hover{
+background-color: black !important;
+color: #4bb6e4 !important;
+}
+
+
 
 /* Footer styles */
 
@@ -90,6 +133,7 @@ main p {
   flex: 1;
   text-align: center;
 }
+
 
 /* Popup container */
 .popup {
@@ -129,3 +173,47 @@ main p {
 .close-btn:hover {
   color: black;
 }
+=======
+.booking-text:hover{
+  background-color: #4bb6e4 !important;
+color: white !important;
+}
+
+/* LIST SPACES */
+
+.list-space-form{
+  background-color: #4bb6e4;
+  width: 60vw;
+  border-radius: 8px;
+  text-align: center;
+  margin: auto;
+  padding: 10px 0px;
+}
+
+.list-btn:hover{
+  background-color: white !important;
+  color: black !important;
+}
+
+/* LOGIN PAGE */
+.login-btn:hover{
+  background-color: black !important;
+  color:#4bb6e4 !important;
+}
+
+/* SIGN UP PAGE */
+
+.signup-form{
+  background-color: #4bb6e4;
+  width: 60vw;
+  border-radius: 8px;
+  text-align: center;
+  margin: auto;
+  padding: 10px 0px;
+}
+
+.signup-btn:hover{
+  background-color: white !important;
+  color: black !important;
+}
+

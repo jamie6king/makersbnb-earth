@@ -46,4 +46,9 @@ class UserRepository:
             person = User(row["id"],row["name"],row["email"],row["phone_number"],row["hashed_password"])
             users.append(person)
         return users
+    
+    def find(self, user_id):
+        result = self._connection.execute("SELECT * FROM users WHERE id = %s", [user_id])
+        row = result[0]
+        return User(row["id"], row["name"], row["email"], row["phone_number"], row["hashed_password"])
 
