@@ -21,10 +21,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/logged">Login</a>
+                <a class="nav-link" href="/login">Login</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/signup">Sign Up</a>
@@ -42,7 +42,7 @@
     </header>
     <main>
       <!-- Centered login form -->
-      <form action="/logged" method="POST">
+      <form action="/login" method="POST">
         <div class="mb-3">
           <label for="email" class="form-label pe-5">Email</label>
           <input type="email" class="form-control-sm" id="email" name="email" aria-describedby="emailHelp"required />
@@ -53,13 +53,12 @@
         </div>
         <button type="submit" class="btn ms-1" style="background-color: #4bb6e4; color: white;">Submit</button>
       </form>
-      <!-- ERRORS NEED TO BE UNCOMMENTED ONCE ROUTE/DATA ETC READY -->
-        <!-- {% if error %}
+        {% if error %}
           <div>
+            <br>
             <p style="color: red;">Invalid email or password!</p>
           </div>
-        {% endif %} -->
-
+        {% endif %}
       </div>
     </main>
     <footer>

@@ -19,11 +19,11 @@ app = Flask(__name__)
 def default_page():
     return render_template('home.html')
 
-@app.route('/logged', methods=['GET'])
+@app.route('/login', methods=['GET'])
 def get_login_page():
     return render_template('login.html')
 
-@app.route('/logged', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def login_attempt():
     email = request.form['email']
     password = request.form['password']
@@ -34,13 +34,17 @@ def login_attempt():
 
     users = repository.all()
     
-    for user in users:
+    if repository.check_password(email, password):
 
-        if user.email == email and user.password == password:
+        return redirect("/logged")
 
-            return render_template("account_home.html")
+    else:
+        
+        return render_template("login.html", error=True)
 
-    return render_template("login.html", error=True)
+@app.route("/logged", methods=['GET'])
+def logged_in():
+    return render_template("account_home.html")
 
 @app.route('/signup', methods=['GET'])
 def get_signup_page():
