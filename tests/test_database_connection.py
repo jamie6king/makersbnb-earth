@@ -15,3 +15,21 @@ def test_database_connection(db_connection):
         {"id": 1, "name": "first_record"},
         {"id": 2, "name": "second_record"}
     ]
+
+# test dummy data
+def test_database_dummy_data(db_connection):
+
+    db_connection.seed("seeds/makersbnb.sql")
+    db_connection.seed("seeds/dummy.sql")
+
+    user_result = db_connection.execute("SELECT * FROM users")
+    assert len(user_result) == 5
+
+    spaces_result = db_connection.execute("SELECT * FROM spaces")
+    assert len(spaces_result) == 6
+
+    availability_result = db_connection.execute("SELECT * FROM availability")
+    assert len(availability_result) == 5
+
+    bookings_result = db_connection.execute("SELECT * FROM booking_requests")
+    assert len(bookings_result) == 5
