@@ -40,6 +40,21 @@ main p{
   font-size: 1.25em;
 }
 
+.show-space{
+  border: solid 3px #4bb6e4;
+  border-radius: 8px;
+  width: 80vw;
+  display: flex;
+  align-items: flex-start; 
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.space-text{
+  align-self: center;
+  flex: 1;
+}
+
 .new-listings{
   border: solid 3px #4bb6e4;
   border-radius: 8px;
