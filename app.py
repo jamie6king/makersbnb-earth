@@ -40,7 +40,7 @@ def login_attempt():
 
     else:
         
-        return render_template("login.html", error=True)
+        return render_template("login.html", error=True, email=email, password=password)
 
 @app.route("/logged", methods=['GET'])
 def logged_in():
