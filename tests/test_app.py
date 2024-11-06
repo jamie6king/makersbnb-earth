@@ -24,6 +24,8 @@ def test_create_space(db_connection, page, test_web_address):
     page.click("text='Upload Space'")
 
 def test_show_space(db_connection, page, test_web_address):
+    db_connection.seed("seeds/makersbnb.sql")
+    db_connection.seed("seeds/dummy.sql")
     page.goto(f"http://{test_web_address}/home")
     page.click("text='Cosy Apartment in the Heart of the City'")
     h1_tag = page.selector("h1")
