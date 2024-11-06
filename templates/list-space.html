@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
 <title>Makers B&B</title>
 <meta charset="utf-8">
@@ -11,25 +13,41 @@
 
 <header class="container-fluid">
     <div class="logo mx-auto mb-5">
+
         <img src="/static/images/B&B.jpeg" alt="Makers B&B Logo" />
-    </div>
-    <nav class="navbar navbar-expand-lg rounded mb-4" style="background-color: #4bb6e4">
+      </div>
+      <nav
+        class="navbar navbar-expand-lg rounded mb-4"
+        style="background-color: #4bb6e4"
+      >
         <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/home">Home</a>
-            </li>
-            <li class="nav-item">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/logged/{{id}}"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="/profile">Profile</a>
-            </li>
-            <li class="nav-item">
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a>
-            </li>
+              </li>
             </ul>
+
+
         </div>
         </div>
     </nav>
@@ -40,50 +58,116 @@
     <form class="list-space-form" action="/list-space" method="POST">
         <!-- {% if errors %}
             <p class="t-errors">
-            There were errors with your submission: {{ errors }}
+            There were errors with your submission: {{ error }}
             </p>
-        {% endif %} -->
-        
+        {% endif %}
 
         <div class="mb-3">
-            <label for="spacename" class="form-label" style="font-size:1.25rem;">Name of Space</label>
-            <input type="text" class="form-control-sm" id="spacename" name="spacename" required>
+          <label for="spacename" class="form-label" style="font-size: 1.25rem"
+            >Name of Space</label
+          >
+          <input
+            type="text"
+            class="form-control-sm"
+            id="spacename"
+            name="spacename"
+            value="{{ name or '' }}"
+            required
+          />
         </div>
 
         <div class="mb-3">
-            <label for="price" class="form-label" style="font-size:1.25rem;">Price</label>
-            <input type="number" class="form-control-sm" id="price" name="price" required>
+          <label for="price" class="form-label" style="font-size: 1.25rem"
+            >Price</label
+          >
+          <input
+            type="number"
+            class="form-control-sm"
+            id="price"
+            name="price"
+            value="{{ price or '' }}"
+            required
+          />
         </div>
 
         <div class="mb-3">
-            <label for="description" class="form-label" style="font-size:1.25rem;">Description</label>
-            <input type="text" class="form-control-sm" name="description" id="description" required>
+          <label for="description" class="form-label" style="font-size: 1.25rem"
+            >Description</label
+          >
+          <input
+            type="text"
+            class="form-control-sm"
+            name="description"
+            id="description"
+            value="{{ description or '' }}"
+            required
+          />
         </div>
 
         <div class="mb-3">
-            <label for="picture-url" class="form-label" style="font-size:1.25rem;">Picture URL</label>
-            <input type="url" class="form-control-sm" name="picture-url" id="picture-url" required>
+          <label for="picture-url" class="form-label" style="font-size: 1.25rem"
+            >Picture URL</label
+          >
+          <input
+            type="url"
+            class="form-control-sm"
+            name="picture-url"
+            id="picture-url"
+            value="{{ picture_url or '' }}"
+            required
+          />
         </div>
 
-        <button type="submit" class="btn ms-1 list-btn" style="background-color: black; color:#4bb6e4">List my space</button>
-    </form>
+
+        <button
+          type="submit"
+          class="btn ms-1"
+          style="background-color: #4bb6e4; color: white"
+        >
+          List my space
+        </button>
+      </form>
+
+      <section class="{% if show_popup %}show-popup{% endif %}">
+        <div class="popup">
+          <div class="popup-content">
+            <a href="/logged/{{ id }}" class="close-btn">&times;</a>
+            <p>New space Listed!</p>
+            <p>Close this pop-up to return to your homepage.</p>
+          </div>
+        </div>
+      </section>
+
 </main>
 
-<footer>
-<div id="footer" class="row pt-2 text-center">
-    <div class="col-sm-5 col-md-4 float-start">
-    <p>© Copyright Makers B&B </p>
-    </div>
-    <div class="col-sm-2 col-md-4">
-    <img src="/static/images/facebook_logo.png" class="social-media img-fluid" alt="facebook logo"/>
-    <img src="/static/images/twitter_logo.png" class="social-media img-fluid" alt="twitter logo"/>
-    <img src="/static/images/instagram_logo.png" class="social-media img-fluid" alt="instagram logo"/>
-    </div>
-    <div class="col-sm-5 col-md-4 float-end">
-    <p>Tel: 01223 344 556</p>
-    <p>Email: help@makersbnb.com</p>
-    </div>
-</div>
-</footer>
-</body>
+
+    <footer>
+      <div id="footer" class="row pt-2 text-center">
+        <div class="col-sm-5 col-md-4 float-start">
+          <p>© Copyright Makers B&B</p>
+        </div>
+        <div class="col-sm-2 col-md-4">
+          <img
+            src="/static/images/facebook_logo.png"
+            class="social-media img-fluid"
+            alt="facebook logo"
+          />
+          <img
+            src="/static/images/twitter_logo.png"
+            class="social-media img-fluid"
+            alt="twitter logo"
+          />
+          <img
+            src="/static/images/instagram_logo.png"
+            class="social-media img-fluid"
+            alt="instagram logo"
+          />
+        </div>
+        <div class="col-sm-5 col-md-4 float-end">
+          <p>Tel: 01223 344 556</p>
+          <p>Email: help@makersbnb.com</p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
