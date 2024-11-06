@@ -42,13 +42,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link active" aria-current="page" href="/logged/{{id}}">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/profile">Profile</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a>
+              </li>
+              <li class="nav-item"></li>
+                <a class="nav-link" href="/listspace/{{id}}">List a Space</a>
               </li>
             </ul>
             <form class="d-flex" role="search">
@@ -71,6 +74,7 @@
       </nav>
     </header>
     <main>
+      
       <h1>Feel at Home, Anywhere</h1>
       <h2
         class="mx-auto rounded"

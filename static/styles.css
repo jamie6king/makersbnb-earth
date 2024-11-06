@@ -11,83 +11,121 @@ body {
 
 /* HOME PAGE */
 /* Header styles */
-.logo{
+.logo {
   text-align: center;
 }
 
 /* Main Styles */
 
-main h1{
+main h1 {
   margin: 12 0;
 }
 
-main p{
+main p {
   margin: 12;
   font-size: 1.25em;
 }
 
-.new-listings{
+.new-listings {
   border: solid 3px #4bb6e4;
   border-radius: 8px;
   width: 80vw;
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
   gap: 20px;
   margin-bottom: 10px;
 }
 
-.new-listings img{
-  max-width: 150px; 
+.new-listings img {
+  max-width: 150px;
   max-height: 150px;
-  height: auto; 
-  flex-shrink: 0; 
-  border-radius: 8px
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 8px;
 }
 
-.listing-text{
-  flex: 1; 
+.listing-text {
+  flex: 1;
   text-align: center;
 }
 
-.listing-contact{
-  flex: 1; 
-  text-align: right
+.listing-contact {
+  flex: 1;
+  text-align: right;
 }
 
 /* Footer styles */
 
-#footer{
+#footer {
   margin-top: 15px;
   background-color: #4bb6e4;
 }
 
-#footer img{
-  width:50px;
+#footer img {
+  width: 50px;
   height: 50px;
   border-radius: 15px;
 }
 
-
 /* PROFILE PAGE */
-.booked-space{
+.booked-space {
   border: solid 3px #4bb6e4;
   border-radius: 8px;
   width: 80vw;
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
   gap: 20px;
   margin-bottom: 10px;
 }
 
-.booked-space img{
-  max-width: 150px; 
+.booked-space img {
+  max-width: 150px;
   max-height: 150px;
-  height: auto; 
-  flex-shrink: 0; 
-  border-radius: 8px
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 8px;
 }
 
-.booked-space-text{
-  flex: 1; 
+.booked-space-text {
+  flex: 1;
   text-align: center;
+}
+
+/* Popup container */
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Show popup if `show-popup` class is added */
+.show-popup .popup {
+  display: flex; /* Show the popup */
+}
+
+/* Popup content */
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+}
+
+/* Close button style */
+.close-btn {
+  color: #aaa;
+  font-size: 24px;
+  cursor: pointer;
+  float: right;
+}
+
+.close-btn:hover {
+  color: black;
 }
