@@ -28,3 +28,10 @@ class SpaceRepository:
             space.picture_url,
             space.user_id
         ])
+    
+
+    def find(self, user_id):
+        result = self._connection.execute("SELECT * FROM spaces WHERE user_id = %s", [user_id])
+        return result.fetchall()
+
+    

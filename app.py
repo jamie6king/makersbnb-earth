@@ -122,7 +122,16 @@ def signup():
 
 @app.route("/profile", methods=["GET"])
 def get_profile_page():
-    return render_template("account-page.html")
+    connection = get_flask_database_connection(app)
+    space_repository = SpaceRepository(connection)
+
+    user_id = session.get('user_id')
+
+    if not user_id:
+        return redirect("/login")
+    
+    spaces = space_repository.find(user_id)
+    return render_template("account-page.html", spaces=spaces)
 
 
 
