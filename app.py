@@ -7,6 +7,7 @@ from lib.user import *
 import re
 from lib.space_repository import SpaceRepository
 from dotenv import load_dotenv
+from lib.booking_requests_repository import BookingRequestsRepository
 
 # Create a new Flask app
 load_dotenv()
@@ -180,7 +181,7 @@ def signup():
 
 @app.route("/profile/<id>", methods=["GET"])
 def get_profile_page(id):
-   connection = get_flask_database_connection(app)
+    connection = get_flask_database_connection(app)
     spacerespository = SpaceRepository(connection)
     userrepository = UserRepository(connection)
     bookingrepository = BookingRequestsRepository(connection)
