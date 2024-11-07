@@ -13,8 +13,10 @@
         <h1>{{space.name}}</h1>
         <h2>${{space.price}} a night</h2>
         <p>{{space.description}}</p>
-        
-        <p>Interested in booking? Call {{user.phone_number}}</p>
-    
+        {% for user in users %}
+        {% if user.id == space.user_id %}
+            <p>Interested in booking? Call {{user.phone_number}}</p>
+        {% endif %}
+        {% endfor %}
     </body>
 </html>
