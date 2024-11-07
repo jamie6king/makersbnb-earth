@@ -5,7 +5,8 @@ from lib.space_repository import *
 from lib.user_repository import *
 from lib.user import *
 import re
-
+from lib.space_repository import SpaceRepository
+from dotenv import load_dotenv
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -123,15 +124,17 @@ def signup():
 @app.route("/profile", methods=["GET"])
 def get_profile_page():
     connection = get_flask_database_connection(app)
-    space_repository = SpaceRepository(connection)
+    spacerespository = SpaceRepository(connection)
+    userrepository = UserRepository(connection)
+    bookingrepository = BookingRequestsRepository(connection)
 
-    user_id = session.get('user_id')
+    spaces = spacerespository.find_users_spaces(session["id"])
+    users = userrepository.all()
+    bookingrequests = bookingrepository.all()
 
-    if not user_id:
-        return redirect("/login")
-    
-    spaces = space_repository.find(user_id)
-    return render_template("account-page.html", spaces=spaces)
+
+    return render_template("account-page.html",spaces=spaces, users=users, bookingrequests=bookingrequests)
+
 
 
 
