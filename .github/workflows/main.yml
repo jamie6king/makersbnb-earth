@@ -2,6 +2,8 @@ name: Test with Postgres+Pytest
 
 on:
   push:
+    branches:
+      - main
   pull_request:
 
 jobs:
