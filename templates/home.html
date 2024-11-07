@@ -91,10 +91,14 @@
             <p>${{ space.price }} a night</p>
             <p class="card-text">{{ space.description }}</p>
           </div>
-
+          
           <div class="listing-contact">
-              <p>Tel: 01234 567 890</p>
+            {% for user in users %}
+            {% if user.id == space.user_id %}
+              <p>Tel: {{user.phone_number}}</p>
               <a href="/{{space.id}}" class="btn space-button" id="space-button" style="background-color: #4bb6e4">Read more</a>
+            {% endif %}
+            {% endfor %}
           </div>
         </div>
         {% endfor %}
