@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="/static/styles.css" />
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    </head>
+
+    <body>
+    <header class="container-fluid">
+        <div class="logo mx-auto mb-5">
+            <img src="/static/images/B&B.jpeg" alt="Makers B&B Logo" />
+        </div>
+        <nav
+            class="navbar navbar-expand-lg rounded mb-4"
+            style="background-color: #4bb6e4"
+        >
+            <div class="container-fluid">
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/logged/{{id}}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showAlert()" href="/">Logout</a>
+                </li>
+                <li class="nav-item"></li>
+                    <a class="nav-link" href="/listspace/{{id}}">List a Space</a>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+        <script>
+            function showAlert() {
+                alert("You have successfully logged out!");
+            }
+        </script>
+        </header>
+
+<h1>Edit Space</h1>
+<form class="list-space-form" action="{{ url_for('update_space', spaceid=space.id) }}" method="POST">
+    <div class="mb-3">
+    <label class="form-label" for="name">Name:</label>
+    <input class="form-control-sm" type="text" id="name" name="name" value="{{ space.name }}" required>
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="description">Description:</label>
+    <textarea class="form-control-sm" id="description" name="description" required>{{ space.description }}</textarea>
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="price">Price:</label>
+    <input class="form-control-sm" type="number" id="price" name="price" value="{{ space.price }}" required>
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="picture_url">Picture URL:</label>
+    <input class="form-control-sm" type="url" id="picture_url" name="picture_url" value="{{ space.picture_url }}" required>
+    </div>
+    <button class="btn update-btn" type="submit" style="background-color: white; color: black; margin-top: 8px;">Update Space</button>
+</form>
+<footer>
+<div id="footer" class="row pt-2 text-center">
+    <div class="col-sm-5 col-md-4 float-start">
+    <p>© Copyright Makers B&B</p>
+    </div>
+    <div class="col-sm-2 col-md-4">
+    <img
+        src="/static/images/facebook_logo.png"
+        class="social-media img-fluid"
+        alt="facebook logo"
+    />
+    <img
+        src="/static/images/twitter_logo.png"
+        class="social-media img-fluid"
+        alt="twitter logo"
+    />
+    <img
+        src="/static/images/instagram_logo.png"
+        class="social-media img-fluid"
+        alt="instagram logo"
+    />
+    </div>
+    <div class="col-sm-5 col-md-4 float-end">
+    <p>Tel: 01223 344 556</p>
+    <p>Email: help@makersbnb.com</p>
+    </div>
+</div>
+</footer>
+</body>
+</html>

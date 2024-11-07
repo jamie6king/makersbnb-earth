@@ -174,6 +174,29 @@ def signup():
 def get_profile_page():
     return render_template("account-page.html")
 
+# Update a space
+
+@app.route('/<int:spaceid>/update', methods=['GET', 'POST'])
+def update_space(spaceid):
+    connection = get_flask_database_connection(app)
+    spaceRepo = SpaceRepository(connection)
+
+    space = spaceRepo.find(spaceid)
+
+    if request.method == 'POST':
+        new_name = request.form['name']
+        new_description = request.form['description']
+        new_price = request.form['price']
+        new_picture_url = request.form['picture_url']
+
+        spaceRepo.update(new_name, new_description, new_price, new_picture_url, spaceid)
+
+        return redirect(f'/{spaceid}')
+
+    return render_template("update-space.html", space=space)
+
+    
+
 
 # These lines start the server if you run this file directly
 # They also start the server configured to use the test database
