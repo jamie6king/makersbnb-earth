@@ -100,7 +100,11 @@
           </div>
 
           <div class="listing-contact">
-            <p>Tel: 01234 567 890</p>
+            {% for user in users %}
+            {% if user.id == space.user_id %}
+              <p>Tel: {{user.phone_number}}</p>
+            {% endif %}
+            {% endfor %}
             <!-- Static for now; can replace with dynamic contact if available -->
             <a
               href="/{{ space.id }}"
