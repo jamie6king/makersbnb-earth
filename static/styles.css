@@ -168,7 +168,8 @@ main p {
 .close-btn:hover {
   color: black;
 }
-======= .booking-text:hover {
+
+.booking-text:hover {
   background-color: #4bb6e4 !important;
   color: white !important;
 }
