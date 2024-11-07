@@ -72,7 +72,10 @@ def login_attempt():
 @app.route("/logged/<id>", methods=['GET'])
 def logged_in(id):
 
-    if str(session["id"]) != str(id): return redirect("/")
+    try:
+        if str(session["id"]) != str(id): return redirect("/")
+    except:
+        return redirect("/")
 
     connection = get_flask_database_connection(app)
     
