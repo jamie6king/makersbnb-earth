@@ -40,7 +40,8 @@ def get_selected_space(spaceid):
     userRepo = UserRepository(connection)
     space = spaceRepo.find(spaceid)
     users = userRepo.all()
-    return render_template("show-space.html", space=space, users=users)
+    current_user = session["id"]
+    return render_template("show-space.html", space=space, users=users, current_user=current_user)
 
 @app.route('/login', methods=['GET'])
 def get_login_page():
