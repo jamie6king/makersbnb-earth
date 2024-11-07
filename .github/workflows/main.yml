@@ -17,6 +17,8 @@ jobs:
         ports:
           - "5432:5432"
 
+        network: host
+
     steps:
       - uses: actions/checkout@v4
 
