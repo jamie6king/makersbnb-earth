@@ -21,9 +21,11 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def default_page():
     connection = get_flask_database_connection(app)
-    repo = SpaceRepository(connection)
-    spaces = repo.all()
-    return render_template('home.html', spaces=spaces)
+    spaceRepo = SpaceRepository(connection)
+    userRepo = UserRepository(connection)
+    spaces = spaceRepo.all()
+    users = userRepo.all()
+    return render_template('home.html', spaces=spaces, users=users)
 
 @app.route('/<spaceid>', methods=['GET'])
 def get_selected_space(spaceid):
