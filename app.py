@@ -72,6 +72,7 @@ def logged_in(id):
     space_respository = SpaceRepository(connection)
     spaces = space_respository.all()
 
+
     return render_template("account_home.html", spaces=spaces, id=id)
 
 
@@ -100,6 +101,7 @@ def submit_listing(id):
 
     # Render success template if everything works
     return render_template('list-space.html', id=id, show_popup=show_popup)
+
 
 
 # @app.route('/testlogged', methods=['GET'])

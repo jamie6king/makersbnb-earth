@@ -15,7 +15,11 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/static/styles.css" />
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
     <title>Feel at Home</title>
   </head>
   <body>
@@ -74,7 +78,6 @@
 
       <!-- Listings Section -->
       <section class="listings">
-
         <h2>Latest Available Stays</h2>
         <br />
 
@@ -97,13 +100,53 @@
             {% for user in users %}
             {% if user.id == space.user_id %}
               <p>Tel: {{user.phone_number}}</p>
-              <a href="/{{space.id}}" class="btn space-button" id="space-button" style="background-color: #4bb6e4">Read more</a>
             {% endif %}
             {% endfor %}
+          <a
+              href="/"
+              class="btn space-button"
+              id="space-button"
+              style="background-color: #4bb6e4"
+              onclick="showPopup(event)"
+              >Read more</a
+            >
           </div>
         </div>
         {% endfor %}
       </section>
+
+      <section>
+        <div class="popup" id="loginPopup">
+          <div class="popup-content">
+            <a href="#" class="close-btn" onclick="closePopup()">&times;</a>
+            <p>Please login or sign up to view space details.</p>
+            <button
+              class="btn space-button"
+              style="background-color: #4bb6e4"
+              onclick="window.location.href='/login'"
+            >
+              Login
+            </button>
+            <button
+              class="btn space-button"
+              style="background-color: #4bb6e4"
+              onclick="window.location.href='/signup'"
+            >
+              Signup to Makers BnB
+            </button>
+          </div>
+        </div>
+      </section>
+      <script>
+        function showPopup(event) {
+          event.preventDefault();
+          document.getElementById("loginPopup").style.display = "flex";
+        }
+
+        function closePopup() {
+          document.getElementById("loginPopup").style.display = "none";
+        }
+      </script>
     </main>
 
     <footer>

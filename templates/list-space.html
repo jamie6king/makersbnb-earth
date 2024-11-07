@@ -71,7 +71,7 @@
     <main>
       <h1>List your space!</h1>
       <br />
-      <form class="list-space-form" action="/list-space" method="POST">
+      <form class="list-space-form" action="/listspace/{{id}}" method="POST">
         {% if errors %}
         <p class="t-errors">
           There were errors with your submission: {{ error }}
