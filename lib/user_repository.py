@@ -34,7 +34,9 @@ class UserRepository:
         id = rows[0]['id']
         # email = rows[0]['email']
         hashed_password = rows[0]['hashed_password']
-        user = User(id, email, hashed_password)
+        phone_number = rows[0]['phone_number']
+        name = rows[0]['name']
+        user = User(id, name, email, phone_number, hashed_password)
         return user
       
     def all(self):
@@ -44,4 +46,9 @@ class UserRepository:
             person = User(row["id"],row["name"],row["email"],row["phone_number"],row["hashed_password"])
             users.append(person)
         return users
+    
+    def find(self, user_id):
+        result = self._connection.execute("SELECT * FROM users WHERE id = %s", [user_id])
+        row = result[0]
+        return User(row["id"], row["name"], row["email"], row["phone_number"], row["hashed_password"])
 

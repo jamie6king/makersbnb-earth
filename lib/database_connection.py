@@ -1,7 +1,9 @@
 import os, psycopg
 from flask import g
 from psycopg.rows import dict_row
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # This class helps us interact with the database.
 # It wraps the underlying psycopg library that we are using.
@@ -12,6 +14,7 @@ class DatabaseConnection:
     # VVV CHANGE BOTH OF THESE VVV
     DEV_DATABASE_NAME = "makersbnb"
     TEST_DATABASE_NAME = "makersbnb-test"
+    DATABASE_LOCATION = os.environ["POSTGRES_URL"] if "POSTGRES_URL" in os.environ else "localhost"
 
     def __init__(self, test_mode=False):
         self.test_mode = test_mode
@@ -21,7 +24,7 @@ class DatabaseConnection:
     def connect(self):
         try:
             self.connection = psycopg.connect(
-                f"postgresql://localhost/{self._database_name()}",
+                f"postgresql://{self.DATABASE_LOCATION}/{self._database_name()}",
                 row_factory=dict_row)
         except psycopg.OperationalError:
             raise Exception(f"Couldn't connect to the database {self._database_name()}! " \

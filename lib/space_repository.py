@@ -32,7 +32,9 @@ class SpaceRepository:
     def find(self, space_id):
         result = self._connection.execute("SELECT * FROM spaces WHERE id = %s", [space_id])
         row = result[0]
-        return Space(row["id"],row["name"], row["description"], row["price"], row["picture_url"], row["user_id"])
+
+        return Space(row["name"], row["description"], row["price"], row["picture_url"], row["user_id"],row["id"])
+
 
     def update(self, new_name, new_description, new_price, new_picture_url, space_id):
         fields = []
@@ -57,7 +59,8 @@ class SpaceRepository:
 
         rows = self._connection.execute('SELECT * FROM spaces WHERE id = %s', [space_id])
         row = rows[0]
-        return Space(row["id"],row["name"], row["description"], row["price"], row["picture_url"], row["user_id"])
+
+        return Space(row["name"], row["description"], row["price"], row["picture_url"], row["user_id"],row["id"])
     
     def find_users_spaces(self,user_id ):
         result = self._connection.execute("SELECT * FROM spaces WHERE user_id = %s", [user_id])
@@ -69,3 +72,4 @@ class SpaceRepository:
             space["user_id"],
             space["id"]
         ) for space in result ]
+
