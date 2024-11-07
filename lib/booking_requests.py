@@ -1,6 +1,5 @@
-class Booking_requests:
-    def __init__(self, id, customer_id,start_date, end_date, space_id, owner_id, accepted):
-        self.id = id
+class BookingRequests:
+    def __init__(self, customer_id,start_date, end_date, space_id, owner_id, accepted):
         self.space_id= space_id
         self.start_date = start_date
         self.end_date= end_date

@@ -177,11 +177,21 @@ def signup():
     # Render success template if everything works
     return render_template('signup_success.html')
 
+
 @app.route("/profile/<id>", methods=["GET"])
 def get_profile_page(id):
-    return render_template("account-page.html", id=id)
+   connection = get_flask_database_connection(app)
+    spacerespository = SpaceRepository(connection)
+    userrepository = UserRepository(connection)
+    bookingrepository = BookingRequestsRepository(connection)
 
-# Update a space
+    spaces = spacerespository.find_users_spaces(session["id"])
+    users = userrepository.all()
+    bookingrequests = bookingrepository.all()
+
+    return render_template("account-page.html", id=id,spaces=spaces, users=users, bookingrequests=bookingrequests)
+
+
 
 @app.route('/<int:spaceid>/update', methods=['GET', 'POST'])
 def update_space(spaceid):
