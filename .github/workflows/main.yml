@@ -31,7 +31,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          playwright install
+          playwright install --with-deps
 
       - name: Wait for PostgreSQL
         run: |
@@ -42,6 +42,8 @@ jobs:
           done
 
       - name: Test with pytest
+        env:
+          POSTGRES_URL: "postgres"
         run: |
           pytest
 
