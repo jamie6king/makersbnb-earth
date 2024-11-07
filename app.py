@@ -6,9 +6,15 @@ from lib.user_repository import *
 from lib.user import *
 import re
 from lib.space_repository import SpaceRepository
+from dotenv import load_dotenv
 
 # Create a new Flask app
+load_dotenv()
 app = Flask(__name__)
+secret_key = os.environ.get("SECRET_KEY")
+if secret_key == None: raise Exception("Ahoy! MakersBNB now uses the session module of Flask, which requires a 'secret key'. To create one: create a '.env' file in the base directory, then add 'SECRET_KEY=<random-characters>' (substitute in random characters). Thanks!")
+app.secret_key = secret_key.encode()
+
 
 # == Your Routes Here ==
 
@@ -51,12 +57,11 @@ def login_attempt():
     user_repository = UserRepository(connection)
 
     users = user_repository.all()
-
-    
     
     if user_repository.check_password(email, password):
 
         id = user_repository.find_by_email(email).id
+        session["id"] = id
         return redirect(f"/logged/{id}")
 
         #return render_template("account_home.html", spaces=spaces)
@@ -67,11 +72,12 @@ def login_attempt():
 
 @app.route("/logged/<id>", methods=['GET'])
 def logged_in(id):
+
+    if session["id"] != id: return redirect("/")
     connection = get_flask_database_connection(app)
     
     space_respository = SpaceRepository(connection)
     spaces = space_respository.all()
-
 
     return render_template("account_home.html", spaces=spaces, id=id)
 
