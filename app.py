@@ -78,11 +78,14 @@ def logged_in(id):
         return redirect("/")
 
     connection = get_flask_database_connection(app)
-    
     space_respository = SpaceRepository(connection)
     spaces = space_respository.all()
 
-    return render_template("account_home.html", spaces=spaces, id=id)
+    userRepo = UserRepository(connection)
+    users = userRepo.all()
+    
+    return render_template('account_home.html', spaces=spaces, users=users, id=id)
+
 
 
 @app.route("/listspace/<id>", methods=['GET'])
