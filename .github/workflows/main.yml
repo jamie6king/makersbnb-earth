@@ -13,6 +13,7 @@ jobs:
         image: postgres:15-alpine
         env:
           POSTGRES_DB: makersbnb-test
+          POSTGRES_USER: runner
           POSTGRES_HOST_AUTH_METHOD: trust
         ports:
           - "5432:5432"
