@@ -93,6 +93,15 @@ main p {
   color: #4bb6e4 !important;
 }
 
+.edit-btn:hover{
+  background-color: black !important;
+  color: #4bb6e4 !important;
+}
+
+.update-btn:hover{
+  background-color: black !important;
+  color: #4bb6e4 !important;
+}
 /* Footer styles */
 
 #footer {

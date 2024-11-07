@@ -65,11 +65,12 @@
                 <p>{{space.description}}</p>
                 {% for user in users %}
                 {% if user.id == space.user_id %}
-                    <p>Interested in booking? Call {{user.phone_number}}</p>
+                    <p>Interested in booking? Call {{users.phone_number}}</p>
                 {% endif %}
                 {% endfor %}
-                <p>Interested in booking? Call {{user.phone_number}}!</p>
+                <p>Interested in booking? Call {{users.phone_number}}!</p>
             </div>
+            <a class= "btn edit-btn" style="background-color: #4bb6e4; color: white; margin-top: 8px;" href="{{ url_for('update_space', spaceid=space.id) }}">Edit Space</a>
         </div>
 
             
