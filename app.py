@@ -177,9 +177,9 @@ def signup():
     # Render success template if everything works
     return render_template('signup_success.html')
 
-@app.route("/profile", methods=["GET"])
-def get_profile_page():
-    return render_template("account-page.html")
+@app.route("/profile/<id>", methods=["GET"])
+def get_profile_page(id):
+    return render_template("account-page.html", id=id)
 
 # Update a space
 
