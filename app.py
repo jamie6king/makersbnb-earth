@@ -6,9 +6,15 @@ from lib.user_repository import *
 from lib.user import *
 import re
 from lib.space_repository import SpaceRepository
+from dotenv import load_dotenv
 
 # Create a new Flask app
+load_dotenv()
 app = Flask(__name__)
+secret_key = os.environ.get("SECRET_KEY")
+if secret_key == None: raise Exception("Ahoy! MakersBNB now uses the session module of Flask, which requires a 'secret key'. To create one: create a '.env' file in the base directory, then add 'SECRET_KEY=<random-characters>' (substitute in random characters). Thanks!")
+app.secret_key = secret_key.encode()
+
 
 # == Your Routes Here ==
 
@@ -21,9 +27,11 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def default_page():
     connection = get_flask_database_connection(app)
-    repo = SpaceRepository(connection)
-    spaces = repo.all()
-    return render_template('home.html', spaces=spaces)
+    spaceRepo = SpaceRepository(connection)
+    userRepo = UserRepository(connection)
+    spaces = spaceRepo.all()
+    users = userRepo.all()
+    return render_template('home.html', spaces=spaces, users=users)
 
 @app.route('/<spaceid>', methods=['GET'])
 def get_selected_space(spaceid):
@@ -31,9 +39,8 @@ def get_selected_space(spaceid):
     spaceRepo = SpaceRepository(connection)
     userRepo = UserRepository(connection)
     space = spaceRepo.find(spaceid)
-    user_id = space.user_id
-    user = userRepo.find(user_id)
-    return render_template("show-space.html", space=space, user=user)
+    users = userRepo.all()
+    return render_template("show-space.html", space=space, users=users)
 
 @app.route('/login', methods=['GET'])
 def get_login_page():
@@ -49,12 +56,11 @@ def login_attempt():
     user_repository = UserRepository(connection)
 
     users = user_repository.all()
-
-    
     
     if user_repository.check_password(email, password):
 
         id = user_repository.find_by_email(email).id
+        session["id"] = id
         return redirect(f"/logged/{id}")
 
         #return render_template("account_home.html", spaces=spaces)
@@ -65,6 +71,9 @@ def login_attempt():
 
 @app.route("/logged/<id>", methods=['GET'])
 def logged_in(id):
+
+    if str(session["id"]) != str(id): return redirect("/")
+
     connection = get_flask_database_connection(app)
     
     space_respository = SpaceRepository(connection)
@@ -98,6 +107,7 @@ def submit_listing(id):
 
     # Render success template if everything works
     return render_template('list-space.html', id=id, show_popup=show_popup)
+
 
 
 # @app.route('/testlogged', methods=['GET'])
