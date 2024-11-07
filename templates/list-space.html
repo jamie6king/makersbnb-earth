@@ -15,8 +15,11 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/static/styles.css" />
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
   </head>
   <body>
     <header class="container-fluid">
@@ -53,17 +56,22 @@
                 <a class="nav-link" href="/profile">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
+                <a class="nav-link" onclick="showAlert()" href="/">Logout</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
+      <script>
+        function showAlert() {
+          alert("You have successfully logged out!");
+        }
+      </script>
     </header>
     <main>
       <h1>List your space!</h1>
       <br />
-      <form class="list-space-form" action="/list-space" method="POST">
+      <form class="list-space-form" action="/listspace/{{id}}" method="POST">
         {% if errors %}
         <p class="t-errors">
           There were errors with your submission: {{ error }}

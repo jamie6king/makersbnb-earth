@@ -21,9 +21,11 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def default_page():
     connection = get_flask_database_connection(app)
-    repo = SpaceRepository(connection)
-    spaces = repo.all()
-    return render_template('home.html', spaces=spaces)
+    spaceRepo = SpaceRepository(connection)
+    userRepo = UserRepository(connection)
+    spaces = spaceRepo.all()
+    users = userRepo.all()
+    return render_template('home.html', spaces=spaces, users=users)
 
 @app.route('/<spaceid>', methods=['GET'])
 def get_selected_space(spaceid):
@@ -31,9 +33,8 @@ def get_selected_space(spaceid):
     spaceRepo = SpaceRepository(connection)
     userRepo = UserRepository(connection)
     space = spaceRepo.find(spaceid)
-    user_id = space.user_id
-    user = userRepo.find(user_id)
-    return render_template("show-space.html", space=space, user=user)
+    users = userRepo.all()
+    return render_template("show-space.html", space=space, users=users)
 
 @app.route('/login', methods=['GET'])
 def get_login_page():
@@ -70,6 +71,7 @@ def logged_in(id):
     space_respository = SpaceRepository(connection)
     spaces = space_respository.all()
 
+
     return render_template("account_home.html", spaces=spaces, id=id)
 
 
@@ -98,6 +100,7 @@ def submit_listing(id):
 
     # Render success template if everything works
     return render_template('list-space.html', id=id, show_popup=show_popup)
+
 
 
 # @app.route('/testlogged', methods=['GET'])
