@@ -34,7 +34,9 @@ class UserRepository:
         id = rows[0]['id']
         # email = rows[0]['email']
         hashed_password = rows[0]['hashed_password']
-        user = User(id, email, hashed_password)
+        phone_number = rows[0]['phone_number']
+        name = rows[0]['name']
+        user = User(id, name, email, phone_number, hashed_password)
         return user
       
     def all(self):

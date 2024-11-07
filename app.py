@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, url_for
 from lib.database_connection import get_flask_database_connection
 from lib.space_repository import *
 from lib.user_repository import *
@@ -27,12 +27,12 @@ def default_page():
     users = userRepo.all()
     return render_template('home.html', spaces=spaces, users=users)
 
-@app.route('/<id>', methods=['GET'])
-def get_selected_space(id):
+@app.route('/<spaceid>', methods=['GET'])
+def get_selected_space(spaceid):
     connection = get_flask_database_connection(app)
     spaceRepo = SpaceRepository(connection)
     userRepo = UserRepository(connection)
-    space = spaceRepo.find(id)
+    space = spaceRepo.find(spaceid)
     users = userRepo.all()
     return render_template("show-space.html", space=space, users=users)
 
@@ -55,29 +55,60 @@ def login_attempt():
     
     if user_repository.check_password(email, password):
 
-        return redirect("/logged")
+        id = user_repository.find_by_email(email).id
+        return redirect(f"/logged/{id}")
+
         #return render_template("account_home.html", spaces=spaces)
     else:
         
         return render_template("login.html", error=True, email=email, password=password)
 
 
-@app.route("/logged", methods=['GET'])
-def logged_in():
+@app.route("/logged/<id>", methods=['GET'])
+def logged_in(id):
     connection = get_flask_database_connection(app)
     
     space_respository = SpaceRepository(connection)
     spaces = space_respository.all()
 
-    return render_template("account_home.html", spaces=spaces)
+
+    return render_template("account_home.html", spaces=spaces, id=id)
 
 
-@app.route('/testlogged', methods=['GET'])
-def get_logged_page():
+@app.route("/listspace/<id>", methods=['GET'])
+def get_list_space_page(id):
+    return render_template("list-space.html", id=id)
+
+@app.route("/listspace/<id>", methods=['POST'])
+def submit_listing(id):
+    name = request.form.get('name')
+    price = request.form.get('price')
+    description = request.form.get('description')
+    picture_url = request.form.get('picture-url')
+
     connection = get_flask_database_connection(app)
-    space_respository = SpaceRepository(connection)
-    spaces = space_respository.all()
-    return render_template('account_home.html', spaces=spaces)
+    repository = SpaceRepository(connection)
+
+    try:
+        new_space = Space(name=name, price=price, description=description, picture_url=picture_url, user_id=id)
+        repository.create(new_space)
+        show_popup = True
+    except Exception as e:
+        print(f"Error creating listing: {e}")
+        error = f"An error occurred: {e}"
+        return render_template('list-space.html', error=error, name=name, price=price, description=description, picture_url=picture_url)
+
+    # Render success template if everything works
+    return render_template('list-space.html', id=id, show_popup=show_popup)
+
+
+
+# @app.route('/testlogged', methods=['GET'])
+# def get_logged_page():
+#     connection = get_flask_database_connection(app)
+#     space_respository = SpaceRepository(connection)
+#     spaces = space_respository.all()
+#     return render_template('account_home.html', spaces=spaces)
 
 @app.route('/signup', methods=['GET'])
 def get_signup_page():
@@ -136,9 +167,6 @@ def signup():
 def get_profile_page():
     return render_template("account-page.html")
 
-@app.route('/list-space', methods=['GET'])
-def get_list_space_page():
-    return render_template('list-space.html')
 
 # These lines start the server if you run this file directly
 # They also start the server configured to use the test database
