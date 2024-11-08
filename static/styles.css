@@ -134,6 +134,11 @@ main p {
   border-radius: 8px;
 }
 
+.space-text img {
+  max-width: 100%;
+  max-height: 750px;
+}
+
 .booked-space-text {
   flex: 1;
   text-align: center;
