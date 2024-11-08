@@ -79,10 +79,10 @@
 
         <div class="container-fluid booked-space">
 
-            <img src="/static/images/imgplaceholder.png">
+          {%for space in spaces%}
+            <img class="mt-2" src={{space.picture_url}}>
     
             <div class="booked-space-text">
-                {%for space in spaces%}
                 
                 <div class="row mt-2 mb-2">
                     <p class="col-md-3"></p>
