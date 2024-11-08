@@ -49,3 +49,19 @@ def test_check_logged_in_homepage_has_spaces(db_connection, page, test_web_addre
 
     listings = page.locator("div.new-listings").all()
     assert len(listings) == 6
+
+def test_check_logged_in_homepage_can_access_space(db_connection, page, test_web_address):
+    db_connection.seed("seeds/makersbnb.sql")
+    db_connection.seed("seeds/dummy.sql")
+    db_connection.execute("INSERT INTO users (email, hashed_password) VALUES ('test@gmail.com', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f')")
+
+    page.goto(f"http://{test_web_address}/login")
+
+    page.fill("input[name='email']", "test@gmail.com")
+    page.fill("input[name='password']", "12345678")
+    page.click("text=Submit")
+
+    listings = page.locator("a.read-more").all()
+    listings[1].click()
+
+    assert True

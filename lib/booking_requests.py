@@ -12,5 +12,5 @@ class BookingRequests:
     
 
     def __repr__(self):
-        return f"User ID:{self.id},customer_id:{self.customer_id} desired dates:{self.start_date}, to {self.end_date}, space:{self.space_id}, owner:{self.owner_id}, accepted:{self.accepted})"
+        return f"space_id: {self.space_id}, customer_id: {self.customer_id}, desired dates: {self.start_date}, to {self.end_date}, space: {self.space_id}, owner: {self.owner_id}, accepted: {self.accepted})"
         
