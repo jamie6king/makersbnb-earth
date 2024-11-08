@@ -7,12 +7,11 @@ INSERT INTO users (name, email, phone_number, hashed_password) VALUES ('Claire',
 
 
 --- dummy spaces
-INSERT INTO spaces (name, description, price, picture_url, user_id) VALUES ('Cozy Cottage', 'A charming cottage in the woods, perfect for a weekend getaway.', 120.00, 'https://images.pexels.com/photos/3214062/pexels-photo-3214062.jpeg', 1);
-INSERT INTO spaces (name, description, price, picture_url, user_id) VALUES ('Modern Apartment', 'A stylish apartment in the heart of the city, close to all attractions.', 150.00, 'https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg', 1);
+INSERT INTO spaces (name, description, price, picture_url, user_id) VALUES ('Cozy Cottage', 'A charming cottage in the woods, perfect for a weekend getaway.', 120.00, 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg', 1);
 INSERT INTO spaces (name, description, price, picture_url, user_id) VALUES ('Beachfront Villa', 'Luxurious villa with stunning ocean views and private beach access.', 300.00, 'https://images.pexels.com/photos/12720677/pexels-photo-12720677.jpeg', 2);
 INSERT INTO spaces (name, description, price, picture_url, user_id) VALUES ('Rustic Cabin', 'A rustic cabin in the mountains, ideal for hiking and nature lovers.', 100.00, 'https://images.pexels.com/photos/28873269/pexels-photo-28873269.jpeg', 2);
 INSERT INTO spaces (name, description, price, picture_url, user_id) VALUES ('Chic Studio', 'A chic studio with a minimalist design, located near trendy cafes.', 90.00, 'https://images.pexels.com/photos/279746/pexels-photo-279746.jpeg', 4);
-INSERT INTO spaces (name, description, price, picture_url, user_id) VALUES ('Family-Friendly Home', 'Spacious home with a backyard, perfect for families with children.', 200.00, 'https://images.pexels.com/photos/1170686/pexels-photo-1170686.jpeg', 5);
+INSERT INTO spaces (name, description, price, picture_url, user_id) VALUES ('Family-Friendly Home', 'Spacious home with a backyard, perfect for families with children.', 200.00, 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg', 5);
 
 --- dummy availability
 INSERT INTO availability (start_date, end_date, space_id) VALUES ('2023-10-01', '2023-10-10', 1);
