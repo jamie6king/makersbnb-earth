@@ -11,4 +11,4 @@ def test_constructs_booking_request():
 
 def test_formats_booking_request():
     exampledate = BookingRequests(1, "10/12/2024", "15/12/2024",1,3,True)
-    assert str(exampledate) =="space_id: 1, customer_id: 1, desired dates: 10/12/2024, to 15/12/2024, space: 1, owner: 3, accepted: True))"
+    assert str(exampledate) =="space_id: 1, customer_id: 1, desired dates: 10/12/2024, to 15/12/2024, space: 1, owner: 3, accepted: True)"
