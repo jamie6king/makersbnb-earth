@@ -102,6 +102,11 @@ main p {
   background-color: black !important;
   color: #4bb6e4 !important;
 }
+
+.list-btn:hover {
+  background-color: black !important;
+  color: #4bb6e4 !important;
+}
 /* Footer styles */
 
 #footer {
