@@ -26,7 +26,7 @@ def test_database_dummy_data(db_connection):
     assert len(user_result) == 5
 
     spaces_result = db_connection.execute("SELECT * FROM spaces")
-    assert len(spaces_result) == 6
+    assert len(spaces_result) == 5
 
     availability_result = db_connection.execute("SELECT * FROM availability")
     assert len(availability_result) == 5

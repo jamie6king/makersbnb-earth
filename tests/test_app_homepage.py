@@ -19,7 +19,7 @@ def test_check_homepage_is_populated(db_connection, page, test_web_address):
     expect(title).to_have_text("Latest Available Stays")
 
     listings = page.locator("div.new-listings").all()
-    assert len(listings) == 6
+    assert len(listings) == 5
 
 def test_check_homepage_cant_see_viewing_when_not_logged_in(db_connection, page, test_web_address):
     db_connection.seed("seeds/makersbnb.sql")
@@ -48,7 +48,7 @@ def test_check_logged_in_homepage_has_spaces(db_connection, page, test_web_addre
     expect(title).to_have_text("Latest Available Stays")
 
     listings = page.locator("div.new-listings").all()
-    assert len(listings) == 6
+    assert len(listings) == 5
 
 def test_check_logged_in_homepage_can_access_space(db_connection, page, test_web_address):
     db_connection.seed("seeds/makersbnb.sql")
